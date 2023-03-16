@@ -1,3 +1,5 @@
+package lesson_2.two_task;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -29,9 +31,24 @@ public class taber {
         }
 
         String line;
+        String[] arr;
+        String[] word = {"Студент ", " получил ", " по предмету "};
+        int j = 1;
         try (BufferedReader br = new BufferedReader(new FileReader(f))) {
             while ((line = br.readLine()) != null) {
-                System.out.println(line);
+                StringBuilder builder = new StringBuilder();
+                arr = new String[line.length()];
+                arr = line.split(", ");
+
+                for (int i = 0; i < word.length; i++) {
+                    builder.append(word[i]);
+                    builder.append(arr[j]);
+                    j += 2;
+                }
+        
+                j = 1;
+                String result = builder.toString();
+                System.out.println(result);
             }
         } catch (IOException e) {
             e.printStackTrace();
